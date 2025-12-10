@@ -1,36 +1,64 @@
 {
-  "name": "XtremeStreamPlayer",
-  "version": "0.0.1",
-  "private": true,
+  "name": "xtreme-stream-player",
+  "version": "1.0.0",
+  "description": "Xtreme Stream Player - Android IPTV App with Fire Stick Support",
+  "main": "index.js",
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
-    "lint": "eslint .",
+    "android:release": "react-native run-android --variant=release",
+    "build:android": "cd android && gradlew.bat assembleRelease",
+    "build:debug": "cd android && ./gradlew assembleDebug",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "clean": "react-native clean",
+    "clean:android": "cd android && ./gradlew clean"
   },
   "dependencies": {
-    "react": "18.3.1",
-    "react-native": "0.75.2"
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "react": "18.2.0",
+    "react-native": "0.75.2",
+    "react-native-vector-icons": "^10.0.3",
+    "react-native-video": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
-    "@react-native/babel-preset": "0.75.2",
-    "@react-native/eslint-config": "0.75.2",
-    "@react-native/metro-config": "0.75.2",
-    "@react-native/typescript-config": "0.75.2",
-    "@types/react": "^18.2.6",
+    "@react-native/eslint-config": "^0.75.2",
+    "@react-native/metro-config": "^0.75.2",
+    "@react-native/typescript-config": "^0.75.2",
+    "@types/react": "^18.0.24",
     "@types/react-test-renderer": "^18.0.0",
-    "babel-jest": "^29.6.3",
+    "babel-jest": "^29.2.1",
     "eslint": "^8.19.0",
-    "jest": "^29.6.3",
-    "prettier": "2.8.8",
-    "react-test-renderer": "18.3.1",
+    "jest": "^29.2.1",
+    "metro-react-native-babel-preset": "0.77.0",
+    "prettier": "^2.4.1",
+    "react-test-renderer": "18.2.0",
     "typescript": "5.0.4"
   },
-  "engines": {
-    "node": ">=18"
-  }
+  "jest": {
+    "preset": "react-native"
+  },
+  "keywords": [
+    "iptv",
+    "streaming",
+    "android",
+    "fire-stick",
+    "react-native",
+    "xtreme-codes",
+    "tv",
+    "media-player"
+  ],
+  "author": "Xtreme Stream Player Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/xtreme-stream-player.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/xtreme-stream-player/issues"
+  },
+  "homepage": "https://github.com/your-username/xtreme-stream-player#readme"
 }

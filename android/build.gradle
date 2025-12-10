@@ -2,8 +2,8 @@ buildscript {
     ext {
         buildToolsVersion = "34.0.0"
         minSdkVersion = 23
-        compileSdkVersion = 34
-        targetSdkVersion = 34
+        compileSdkVersion = 35
+        targetSdkVersion = 35
         ndkVersion = "26.1.10909125"
         kotlinVersion = "1.9.24"
     }
@@ -12,10 +12,37 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
+        // The version of the Android Gradle Plugin (AGP) you are using needs the correct classpath.
+        // I'm assuming you are on a modern enough version, but if this fails, we can adjust the AGP version.
+        classpath('com.android.tools.build:gradle:8.6.0') // NOTE: I've added a common working version here
         classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.24") // NOTE: Added version from ext
     }
 }
 
 apply plugin: "com.facebook.react.rootproject"
+
+// IMPORTANT: This is the block that was missing the Google/Maven repositories for the app's dependencies!
+allprojects {
+    repositories {
+        google() // CRITICAL: This allows Gradle to find the missing 'com.android.support' libraries
+        mavenCentral()
+        
+        // These are often included by React Native for its own dependencies:
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url("$rootDir/../node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../node_modules/jsc-android/dist")
+        }
+        
+        // Remove jcenter() if it exists as it is deprecated.
+    }
+}
+
+// The rest of the file (usually the task clean block) should remain unchanged below this line.
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

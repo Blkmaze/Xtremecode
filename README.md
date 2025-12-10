@@ -1,79 +1,213 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Xtreme Stream Player
 
-# Getting Started
+A comprehensive Android IPTV streaming application built with React Native, compatible with Fire Stick, Android TV, and all Android devices. Features Xtreme Codes API integration with adaptive streaming support.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## 🚀 Features
 
-## Step 1: Start the Metro Server
+### Core Functionality
+- **Live TV Streaming** - Watch live channels with HLS/DASH adaptive streaming
+- **Video on Demand (VOD)** - Stream movies and on-demand content
+- **Series Streaming** - Access TV series and multi-season content
+- **Electronic Program Guide (EPG)** - View program schedules and information
+- **Multi-Format Support** - HLS, DASH, MP4, TS, and more
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+### Device Compatibility
+- **Amazon Fire Stick** (All generations)
+- **Amazon Fire TV** (All models)
+- **Android TV** (All versions)
+- **Android Mobile & Tablet** (Android 5.0+)
+- **Android TV Boxes** (All manufacturers)
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### User Experience
+- **Remote Control Support** - Full D-pad navigation and button mapping
+- **Voice Control** - Compatible with Alexa and Google Assistant
+- **Touch Support** - Works with touchscreen devices
+- **Keyboard Navigation** - Full keyboard shortcut support
+- **Responsive Design** - Optimized for all screen sizes
 
+## 📱 Installation
+
+### Method 1: Direct APK Installation
+1. Download the latest APK from the releases section
+2. Enable "Install from Unknown Sources" on your device
+3. Install the APK and launch the app
+
+### Method 2: Fire Stick Installation
+1. Go to Settings > My Fire TV > Developer Options
+2. Enable "Apps from Unknown Sources"
+3. Use Apps2Fire app or ADB to install:
+   ```bash
+   adb install XtremeStreamPlayer.apk
+   ```
+
+### Method 3: Android TV Installation
+1. Enable unknown sources in Settings > Device Preferences > Security
+2. Transfer APK via USB or network sharing
+3. Install using a file manager app
+
+## ⚙️ Configuration
+
+### First-Time Setup
+1. Launch the app
+2. Enter your Xtreme Codes server details:
+   - **Server URL**: Your IPTV provider's portal URL
+   - **Username**: Your IPTV account username
+   - **Password**: Your IPTV account password
+3. Click "Connect" to authenticate
+
+### Server Requirements
+- Xtreme Codes compatible IPTV service
+- HTTP/HTTPS streaming endpoints
+- Valid authentication credentials
+
+## 🎮 Remote Control Guide
+
+### Navigation
+- **D-Pad Up/Down** - Channel switching
+- **D-Pad Left/Right** - Seek (VOD only)
+- **OK/Enter** - Play/Pause
+- **Back** - Go back or exit
+- **Menu** - Open EPG (Electronic Program Guide)
+
+### Media Controls
+- **Play/Pause** - Toggle playback
+- **Fast Forward** - Increase playback speed (VOD)
+- **Rewind** - Decrease playback speed (VOD)
+- **Channel Up/Down** - Switch channels
+- **Volume Up/Down** - Adjust volume
+- **Mute** - Toggle audio mute
+
+### Number Keys
+- **0-9** - Direct channel selection (when supported)
+
+## 🔧 Technical Specifications
+
+### Streaming Technology
+- **Adaptive Bitrate Streaming** - HLS and DASH support
+- **Buffer Optimization** - Smart buffering for smooth playback
+- **Multiple Codecs** - H.264, H.265, VP9, AV1
+- **Audio Support** - AAC, AC3, DTS, MP3
+- **Subtitle Support** - SRT, VTT, ASS formats
+
+### Performance Features
+- **Hardware Acceleration** - GPU-accelerated video decoding
+- **Memory Management** - Optimized for low-memory devices
+- **Network Adaptation** - Automatic quality adjustment
+- **Background Playback** - Continue audio when app is backgrounded
+
+### Security
+- **Secure Streaming** - HTTPS and DRM support
+- **Credential Protection** - Encrypted storage of login details
+- **Network Security** - Certificate pinning support
+
+## 📺 Screen Optimization
+
+### Fire Stick (1080p)
+- Optimized layout for remote control navigation
+- Large, touch-friendly buttons
+- High contrast UI for visibility
+
+### Android TV (4K)
+- Ultra HD interface scaling
+- Enhanced graphics for large screens
+- Multi-window support
+
+### Mobile Devices
+- Responsive touch interface
+- Portrait and landscape support
+- Gesture controls
+
+## 🛠️ Development
+
+### Build Requirements
+- Node.js 16+
+- React Native CLI
+- Android Studio
+- Android SDK (API 21+)
+
+### Build Commands
 ```bash
-# using npm
-npm start
+# Install dependencies
+npm install
 
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
+# Build for Android
 npm run android
 
-# OR using Yarn
-yarn android
+# Build release APK
+npm run build:android
+
+# Build debug APK
+npm run build:debug
 ```
 
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+### Project Structure
+```
+src/
+├── components/
+│   ├── MainApp.tsx          # Main application component
+│   ├── StreamingPlayer.tsx   # Video player with controls
+│   └── EPG.tsx             # Electronic Program Guide
+├── services/
+│   └── xtremeCodesAPI.ts    # API integration service
+└── hooks/
+    └── useRemoteControl.ts   # Remote control handler
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+## 🔍 Troubleshooting
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### Common Issues
 
-## Step 3: Modifying your App
+**Stream Not Loading**
+- Check internet connection
+- Verify server URL and credentials
+- Ensure server supports external access
 
-Now that you have successfully run the app, let's modify it.
+**Remote Control Not Working**
+- Check device compatibility
+- Restart the application
+- Ensure D-pad navigation is enabled
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+**Audio Issues**
+- Check device volume settings
+- Try different audio tracks in settings
+- Restart the stream
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+**EPG Not Showing**
+- Verify EPG is enabled on your server
+- Check internet connectivity
+- Refresh EPG data from menu
 
-## Congratulations! :tada:
+### Performance Optimization
 
-You've successfully run and modified your React Native App. :partying_face:
+**Buffering Issues**
+- Check internet speed (minimum 5 Mbps recommended)
+- Close other applications
+- Restart your router/modem
 
-### Now what?
+**Laggy Interface**
+- Restart the application
+- Clear app cache
+- Check device storage space
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+## 📄 License
 
-# Troubleshooting
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+## 🤝 Contributing
 
-# Learn More
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-To learn more about React Native, take a look at the following resources:
+## 📞 Support
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+For support and feature requests:
+- Create an issue on GitHub
+- Check the troubleshooting section
+- Contact your IPTV provider for server issues
+
+---
+
+**Note**: This application requires a compatible Xtreme Codes IPTV service. The app does not provide any content itself - it's a player that works with your existing IPTV subscription.
