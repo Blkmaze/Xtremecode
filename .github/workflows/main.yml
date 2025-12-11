@@ -26,20 +26,25 @@ jobs:
         with:
           node-version: "20"
 
-      # 4) Install dependencies
+      # 4) Validate package.json BEFORE installing dependencies
+        - name: Validate package.json
+        run: |
+         node -e "const fs=require('fs'); JSON.parse(fs.readFileSync('package.json','utf8')); console.log('package.json OK')"
+
+      # 5) Install dependencies
       - name: Install npm dependencies
         run: npm ci
 
-      # 5) FIX: Make gradlew executable (required on GitHub!)
+      # 6) FIX: Make gradlew executable (required on GitHub!)
       - name: Make gradlew executable
         run: chmod +x android/gradlew
 
-      # 6) Build release APK
+      # 7) Build release APK
       - name: Build release APK
         working-directory: android
         run: ./gradlew assembleRelease
 
-      # 7) Upload APK artifact
+      # 8) Upload APK artifact
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
