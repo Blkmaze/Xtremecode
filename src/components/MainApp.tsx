@@ -1,3 +1,4 @@
+import { FocusableChannelGrid } from './FocusableChannelGrid';
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
