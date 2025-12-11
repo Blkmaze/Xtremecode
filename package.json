@@ -1,4 +1,4 @@
-﻿{
+{
     "name":  "xtreme-stream-player",
     "version":  "1.0.1",
     "description":  "Xtreme Stream Player - Android IPTV App with Fire Stick Support",
@@ -6,13 +6,13 @@
     "scripts":  {
                     "android":  "react-native run-android",
                     "android:release":  "react-native run-android --variant=release",
-                    "build:android":  "cd android \u0026\u0026 gradlew.bat assembleRelease",
-                    "build:debug":  "cd android \u0026\u0026 ./gradlew assembleDebug",
+                    "build:android":  "cd android && gradlew.bat assembleRelease",
+                    "build:debug":  "cd android && ./gradlew assembleDebug",
                     "start":  "react-native start",
                     "test":  "jest",
                     "lint":  "eslint . --ext .js,.jsx,.ts,.tsx",
                     "clean":  "react-native clean",
-                    "clean:android":  "cd android \u0026\u0026 ./gradlew clean"
+                    "clean:android":  "cd android && ./gradlew clean"
                 },
     "dependencies":  {
                          "@react-native-async-storage/async-storage":  "^1.21.0",
